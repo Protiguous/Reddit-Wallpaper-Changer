@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Reddit Wallpaper Changer")]
 [assembly: AssemblyDescription("Reddit Wallpaper Changer")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("/u/Rawns")]
+[assembly: AssemblyCompany( "" )]
 [assembly: AssemblyProduct("Reddit Wallpaper Changer")]
-[assembly: AssemblyCopyright("Copyright © /u/Rawns 2016-2017")]
+[assembly: AssemblyCopyright( "" )]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
