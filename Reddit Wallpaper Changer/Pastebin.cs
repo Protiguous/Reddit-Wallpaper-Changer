@@ -15,7 +15,7 @@ namespace Reddit_Wallpaper_Changer
             Properties.Settings.Default.Save();
 
             System.Collections.Specialized.NameValueCollection Data = new System.Collections.Specialized.NameValueCollection();
-            Data["api_paste_name"] = "RWC_Log_" + DateTime.Now.ToString() + ".log";
+            Data["api_paste_name"] = "RWC_Log_" + DateTime.Now + ".log";
             Data["api_paste_expire_Date"] = "N";
             Data["api_paste_code"] = File.ReadAllText(Properties.Settings.Default.AppDataPath + @"\Logs\RWC.log");
             Data["api_dev_key"] = "017c00e3a11ee8c70499c1f4b6b933f0";

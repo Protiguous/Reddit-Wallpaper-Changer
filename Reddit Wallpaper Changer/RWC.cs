@@ -66,10 +66,7 @@ namespace Reddit_Wallpaper_Changer
             }
 
             Logging.LogMessageToFile("===================================================================================================================", 0);
-            Random random = new Random();
-            int db = random.Next(0, 1000);
-            if (db == 500) { SuperSecret.DickButt(); }
-            Logging.LogMessageToFile("Reddit Wallpaper Changer Version " + Assembly.GetEntryAssembly().GetName().Version.ToString(), 0);
+            Logging.LogMessageToFile("Reddit Wallpaper Changer Version " + Assembly.GetEntryAssembly().GetName().Version, 0);
             Logging.LogMessageToFile("RWC is starting.", 0);
             Logging.LogMessageToFile("RWC Interface Loaded.", 0);
 
@@ -569,7 +566,7 @@ namespace Reddit_Wallpaper_Changer
             {
                 String latestVersion = wc.DownloadString("https://raw.githubusercontent.com/Rawns/Reddit-Wallpaper-Changer/master/version");
 
-                if (!latestVersion.ToString().Contains(currentVersion.Trim().ToString()))
+                if (!latestVersion.Contains(this.currentVersion.Trim()))
                 {
                     Logging.LogMessageToFile("Current Version: " + currentVersion + ". " + "Latest version: " + latestVersion, 0);
                     DialogResult choice = MessageBox.Show("You are running version " + currentVersion + ".\r\n\r\n" + "Download version " + latestVersion.Split(new[] { '\r', '\n' }).FirstOrDefault() + " now?", "Update Avaiable!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -817,7 +814,7 @@ namespace Reddit_Wallpaper_Changer
                          break;
                      case 9:
                          // Truly Random
-                         formURL += "/random.json?p=" + (System.Guid.NewGuid().ToString());
+                         formURL += "/random.json?p=" + (System.Guid.NewGuid());
                          Logging.LogMessageToFile("Full URL Search String: " + formURL, 0);
                          break;
                 }
@@ -906,8 +903,8 @@ namespace Reddit_Wallpaper_Changer
                             {
                                 if (wallpaperGrabType != 0)
                                 {
-                                    currentThread = "http://reddit.com" + token["data"]["permalink"].ToString();
-                                    Logging.LogMessageToFile("Found a wallpaper! Title: " + token["data"]["title"].ToString() + ", URL: " + token["data"]["url"].ToString() + ", ThreadID: " + token["data"]["id"].ToString(), 0);
+                                    currentThread = "http://reddit.com" + token["data"]["permalink"];
+                                    Logging.LogMessageToFile("Found a wallpaper! Title: " + token["data"]["title"] + ", URL: " + token["data"]["url"] + ", ThreadID: " + token["data"]["id"], 0);
 
                                     // check URL 
                                     if (Validation.checkImg(token["data"]["url"].ToString()))
@@ -937,8 +934,8 @@ namespace Reddit_Wallpaper_Changer
                                 else
                                 {
                                     token = redditResult.ElementAt(random.Next(0, redditResult.Count() - 1));
-                                    currentThread = "http://reddit.com" + token["data"]["permalink"].ToString();
-                                    Logging.LogMessageToFile("Found a wallpaper! Title: " + token["data"]["title"].ToString() + ", URL: " + token["data"]["url"].ToString() + ", ThreadID: " + token["data"]["id"].ToString(), 0);
+                                    currentThread = "http://reddit.com" + token["data"]["permalink"];
+                                    Logging.LogMessageToFile("Found a wallpaper! Title: " + token["data"]["title"] + ", URL: " + token["data"]["url"] + ", ThreadID: " + token["data"]["id"], 0);
 
                                     // check URL 
                                     if (Validation.checkImg(token["data"]["url"].ToString()))
@@ -1498,7 +1495,7 @@ namespace Reddit_Wallpaper_Changer
                     if (Properties.Settings.Default.autoUpdateCheck == true)
                     {
                         String latestVersion = wc.DownloadString("https://raw.githubusercontent.com/Rawns/Reddit-Wallpaper-Changer/master/version");
-                        if (!latestVersion.Contains(currentVersion.Trim().ToString()))
+                        if (!latestVersion.Contains(this.currentVersion.Trim()))
                         {
                             Form Update = new Update(latestVersion, this);
                             Update.Show();
@@ -1552,7 +1549,7 @@ namespace Reddit_Wallpaper_Changer
         private void blacklistDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int rowIndex = e.RowIndex;
-            System.Diagnostics.Process.Start("http://reddit.com/" + blacklistDataGrid.Rows[e.RowIndex].Cells[2].Value.ToString());
+            System.Diagnostics.Process.Start("http://reddit.com/" + this.blacklistDataGrid.Rows[e.RowIndex].Cells[2].Value);
         }
 
         //======================================================================
@@ -1561,7 +1558,7 @@ namespace Reddit_Wallpaper_Changer
         private void historyDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int rowIndex = e.RowIndex;
-            System.Diagnostics.Process.Start("http://reddit.com/" + historyDataGrid.Rows[e.RowIndex].Cells[2].Value.ToString());
+            System.Diagnostics.Process.Start("http://reddit.com/" + this.historyDataGrid.Rows[e.RowIndex].Cells[2].Value);
         }
 
         //======================================================================
@@ -1570,7 +1567,7 @@ namespace Reddit_Wallpaper_Changer
         private void favouritesDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int rowIndex = e.RowIndex;
-            System.Diagnostics.Process.Start("http://reddit.com/" + favouritesDataGrid.Rows[e.RowIndex].Cells[2].Value.ToString());
+            System.Diagnostics.Process.Start("http://reddit.com/" + this.favouritesDataGrid.Rows[e.RowIndex].Cells[2].Value);
         }
 
         //======================================================================

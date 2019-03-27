@@ -77,7 +77,7 @@ namespace Reddit_Wallpaper_Changer
             try
             {
                 sw = new StreamWriter(logfiledir + @"\RWC.log", true);
-                sw.WriteLine(DateTime.Now.ToString() + " - " + hostName + " - " + level + " " + msg);
+                sw.WriteLine(DateTime.Now + " - " + hostName + " - " + level + " " + msg);
                 sw.Flush();
                 sw.Close();
             }
